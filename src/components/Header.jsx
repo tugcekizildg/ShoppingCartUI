@@ -3,7 +3,7 @@ import { FaShoppingCart } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
 const Header = () => {
   const [showDropdown, setShowDropdown] = useState(false);
-  const { cart } = useCart();
+  const { cart, removeFromCart, clearCart } = useCart();
   const itemCount = cart.reduce((acc, item) => acc + item.quantity, 0);
   const total = cart
     .reduce((acc, item) => acc + item.price * item.quantity, 0)
@@ -43,6 +43,11 @@ const Header = () => {
                             {item.quantity} x ${item.price}
                           </p>
                         </div>
+                        <button
+                          onClick={() => removeFromCart(item.id)}
+                          className='text-fuchsia-500 hover:underline cursor-pointer'>
+                          Remove
+                        </button>
                       </li>
                     ))}
                   </ul>
@@ -50,6 +55,11 @@ const Header = () => {
                     <p className='font-semibold'>Total:</p>
                     <p className='font-semibold'>${total}</p>
                   </div>
+                  <button
+                    onClick={clearCart}
+                    className='mt-4 w-full bg-fuchsia-400 text-white py-1 rounded cursor-pointer hover:bg-fuchsia-500'>
+                    Clear Cart
+                  </button>
                 </>
               )}
             </div>
