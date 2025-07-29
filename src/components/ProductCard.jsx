@@ -3,7 +3,7 @@ import { useCart } from '../context/CartContext';
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
   return (
-    <div className='bg-white p-4 rounded-lg shadow-md border-l-4 border-blue-400 flex flex-col'>
+    <div className='bg-white p-4 rounded-lg shadow-md border-l-2 border-r-2 border-blue-400 flex flex-col'>
       <img
         src={product.image}
         alt={product.name}
